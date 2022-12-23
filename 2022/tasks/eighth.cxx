@@ -17,7 +17,7 @@ std::vector<std::vector<int>> read_woods(std::string filepath)
     while(std::getline(input_file, line))
     {
         std::vector<int> treeline;
-        for (int i = 0; i < line.length(); ++i)
+        for (size_t i = 0; i < line.length(); ++i)
         {
             treeline.push_back(std::stoi(std::string(1, line[i])));
         }
@@ -31,16 +31,16 @@ int visible_trees(std::vector<std::vector<int>> woods)
     // start off with outer trees
     int visible_count = (2 * woods.size()) + (2 * (woods[0].size() - 2));
 
-    for(int i = 1; i < woods.size() - 1; i++)
+    for(size_t i = 1; i < woods.size() - 1; i++)
     {
-        for(int j = 1; j < woods[i].size() - 1; j++)
+        for(size_t j = 1; j < woods[i].size() - 1; j++)
         {
             bool blocked_left = false;
             bool blocked_right = false;
             bool blocked_up = false;
             bool blocked_down = false;
             //left
-            for(int k = 0; k < j; k++)
+            for(size_t k = 0; k < j; k++)
             {
                 if (woods[i][k] >= woods[i][j])
                 {
@@ -49,7 +49,7 @@ int visible_trees(std::vector<std::vector<int>> woods)
                 }
             }
             //right
-            for(int k = j + 1; k < woods[i].size(); k++)
+            for(size_t k = j + 1; k < woods[i].size(); k++)
             {
                 if (woods[i][k] >= woods[i][j])
                 {
@@ -59,7 +59,7 @@ int visible_trees(std::vector<std::vector<int>> woods)
             }
 
             //up
-            for(int k = 0; k < i; k++)
+            for(size_t k = 0; k < i; k++)
             {
                 if (woods[k][j] >= woods[i][j])
                 {
@@ -68,7 +68,7 @@ int visible_trees(std::vector<std::vector<int>> woods)
                 }
             }
             //down
-            for(int k = i + 1; k < woods.size(); k++)
+            for(size_t k = i + 1; k < woods.size(); k++)
             {
                 if (woods[k][j] >= woods[i][j])
                 {
@@ -88,20 +88,20 @@ int visible_trees(std::vector<std::vector<int>> woods)
 int scenic_trees(std::vector<std::vector<int>> woods)
 {
     int best_score = 0;
-    for(int i = 1; i < woods.size() - 1; i++)
+    for(size_t i = 1; i < woods.size() - 1; i++)
     {
-        for(int j = 1; j < woods[i].size() - 1; j++)
+        for(size_t j = 1; j < woods[i].size() - 1; j++)
         {
             int score_left = -1;
             int score_right = -1;
             int score_up = -1;
             int score_down = -1;
             //left
-            for(int k = j - 1; k >= 0; k--)
+            for(int k = int(j) - 1; k >= 0; k--)
             {
                 if (woods[i][k] >= woods[i][j])
                 {
-                    score_left = std::abs(j-k);
+                    score_left = std::abs(int(j-k));
                     break;
                 }
             }
@@ -109,11 +109,11 @@ int scenic_trees(std::vector<std::vector<int>> woods)
                 score_left = j;
 
             //right
-            for(int k = j + 1; k < woods[i].size(); k++)
+            for(size_t k = j + 1; k < woods[i].size(); k++)
             {
                 if (woods[i][k] >= woods[i][j])
                 {
-                    score_right = std::abs(j-k);
+                    score_right = std::abs(int(j-k));
                     break;
                 }
             }
@@ -121,22 +121,22 @@ int scenic_trees(std::vector<std::vector<int>> woods)
                 score_right = woods[i].size() - 1 - j;
 
             //up
-            for(int k = i - 1; k >= 0; k--)
+            for(int k = int(i) - 1; k >= 0; k--)
             {
                 if (woods[k][j] >= woods[i][j])
                 {
-                    score_up = std::abs(i-k);
+                    score_up = std::abs(int(i-k));
                     break;
                 }
             }
             if (score_up == -1)
                 score_up = i;
             //down
-            for(int k = i + 1; k < woods.size(); k++)
+            for(size_t k = i + 1; k < woods.size(); k++)
             {
                 if (woods[k][j] >= woods[i][j])
                 {
-                    score_down = std::abs(i-k);
+                    score_down = std::abs(int(i-k));
                     break;
                 }
             }

@@ -81,9 +81,6 @@ std::vector<AssignmentGroup> read_group(std::string filepath)
 
     while(std::getline(input_file, line))
     {
-        auto comma = line.find(',');
-        // if not comma...
-
         AssignmentGroup new_group;
         new_group.set_from_string(line);
         assignments.push_back(new_group);

@@ -18,7 +18,7 @@ set(sources ${sources}
 
 find_package(OpenMP)
 
-#add_compile_options(-Wall -Wextra -pedantic -Werror -fopenmp)
+add_compile_options(-Wall -Wextra -pedantic -Werror -fopenmp)
 
 foreach( taskfile ${sources} )
     # I used a simple string replace, to cut off .cpp.

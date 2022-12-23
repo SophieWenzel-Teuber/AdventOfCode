@@ -48,7 +48,7 @@ int main()
 
     int number_of_top_elves = 3;
     int top_calories = 0;
-    for (size_t i = 0; i < number_of_top_elves; ++i)
+    for (int i = 0; i < number_of_top_elves; ++i)
     {
         top_calories += calories[i];
     }

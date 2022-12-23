@@ -25,7 +25,7 @@ public:
     std::vector<char> remove_crates(int amount)
     {
         std::vector<char> removed;
-        for(size_t i = 0; i < amount; i++)
+        for(int i = 0; i < amount; i++)
         {
             removed.push_back(current_stack.back());
             current_stack.pop_back();

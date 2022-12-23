@@ -24,8 +24,8 @@ public:
         return value == -1;
     }
     int value = -1;
-    std::vector<ListOrInt> inner_things;
     ListOrInt * parent;
+    std::vector<ListOrInt> inner_things;
 };
 
 
