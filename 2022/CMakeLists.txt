@@ -11,6 +11,7 @@ project(
   VERSION 1.0
   LANGUAGES CXX)
 
+
 # If you set any CMAKE_ variables, that can go here.
 # (But usually don't do this, except maybe for C++ standard)
 
@@ -29,6 +30,7 @@ project(
 # Adding something we can run - Output name matches target name
 
 add_subdirectory(tasks)
+
 
 #add_executable(MyExample simple_example.cpp)
 
