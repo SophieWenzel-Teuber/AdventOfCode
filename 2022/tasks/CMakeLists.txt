@@ -10,7 +10,7 @@ set(sources ${sources}
     nineth.cxx
     tenth.cxx
     eleventh.cxx
-    #twelveth.cxx
+    twelveth.cxx
     thirteenth.cxx
     fourteenth.cxx
     fifteenth.cxx
